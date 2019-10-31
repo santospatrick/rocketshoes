@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
     MdRemoveCircleOutline,
     MdAddCircleOutline,
@@ -7,6 +8,8 @@ import {
 import { Container, ProductTable, Total } from './styles';
 
 function Cart() {
+    const cart = useSelector(state => state.cart);
+
     return (
         <Container>
             <ProductTable>
@@ -20,43 +23,49 @@ function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <img
-                                src="https://static.netshoes.com.br/produtos/tenis-nike-revolution-5-feminino/26/HZM-1729-026/HZM-1729-026_detalhe2.jpg?ims=326x"
-                                alt="Tenis no carrinho"
-                            />
-                        </td>
-                        <td>
-                            <strong>Tênis muito massa</strong>
-                            <span>R$129,90</span>
-                        </td>
-                        <td>
-                            <div>
-                                <button type="button">
-                                    <MdRemoveCircleOutline
-                                        size={20}
-                                        color="#7159c1"
+                    {cart.map(product => (
+                        <tr key={product.id}>
+                            <td>
+                                <img
+                                    src={product.image}
+                                    alt="Tenis no carrinho"
+                                />
+                            </td>
+                            <td>
+                                <strong>{product.title}</strong>
+                                <span>{product.priceFormatted}</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <button type="button">
+                                        <MdRemoveCircleOutline
+                                            size={20}
+                                            color="#7159c1"
+                                        />
+                                    </button>
+                                    <input
+                                        type="number"
+                                        readOnly
+                                        value={product.amount}
                                     />
-                                </button>
-                                <input type="number" readOnly value={1} />
+                                    <button type="button">
+                                        <MdAddCircleOutline
+                                            size={20}
+                                            color="#7159c1"
+                                        />
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <strong>R$120,00</strong>
+                            </td>
+                            <td>
                                 <button type="button">
-                                    <MdAddCircleOutline
-                                        size={20}
-                                        color="#7159c1"
-                                    />
+                                    <MdDelete size={20} color="#7159c1" />
                                 </button>
-                            </div>
-                        </td>
-                        <td>
-                            <strong>R$258,80</strong>
-                        </td>
-                        <td>
-                            <button type="button">
-                                <MdDelete size={20} color="#7159c1" />
-                            </button>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </ProductTable>
 

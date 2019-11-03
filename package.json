@@ -7,6 +7,7 @@
     "history": "^4.10.1",
     "immer": "^5.0.0",
     "polished": "^3.4.1",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-icons": "^3.8.0",
@@ -26,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mock": "json-server --watch server.json --port 3010"
+    "mock": "json-server --watch server.json --port 3010",
+    "lint": "eslint --fix src/ --ext .js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,7 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-react-hooks": "^2.2.0",
     "json-server": "^0.15.1",
     "prettier": "^1.18.2"
   }

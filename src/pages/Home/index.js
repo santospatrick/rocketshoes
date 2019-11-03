@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { MdAddShoppingCart } from 'react-icons/md';
@@ -52,6 +53,13 @@ function Home({ addToCartRequest, amount }) {
         </ProductList>
     );
 }
+
+Home.propTypes = {
+    addToCartRequest: PropTypes.func.isRequired,
+    amount: PropTypes.shape({
+        [PropTypes.number]: PropTypes.number,
+    }).isRequired,
+};
 
 const mapStateToProps = state => ({
     amount: state.cart.reduce((amount, product) => {
